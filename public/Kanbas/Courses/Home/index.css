@@ -1,0 +1,102 @@
+#SideBar {
+    position: fixed;
+    top: 10%;
+
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+
+}
+
+
+
+#SideBar .list-group-item {
+    height: 72px;
+    border-style: none;
+    background-color: black;
+    font-size: small;
+    border-radius: 0%;
+    width: 90px;
+    color: white;
+}
+
+#topBar {
+    padding-left: 30px;
+    height: 10%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    border-color: grey;
+    border-bottom: 1px solid grey;
+    z-index: 1;
+
+}
+
+.logo {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: black;
+    background-image: url(./resources/NEU_logo.png);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 90px;
+    height: 10%;
+
+}
+
+.fas {
+    color: red;
+}
+
+.fa-stack {
+    font-size: 1.8em;
+
+}
+
+
+#SideBar ul li.active {
+    background-color: #fff;
+    /* White background when clicked */
+    color: red;
+    /* Red font color when clicked */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#SubBarHome ul li {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-decoration: none;
+    color: red;
+}
+
+#SubBarHome ul a li.active {
+    border-left: solid 2px gray;
+    color: black;
+}
+
+.list-group-item {
+    border: none;
+}
+
+#module1 div.list-group-item {
+    border: 0.5px solid gray !important;
+
+}
+
+.profileHeader {
+    padding: 12px 0 0 0;
+    line-height: 1.25;
+    margin: 6px 0;
+    font-family: "Helvetica Neue" !important;
+    font-weight: normal;
+    font-size: 1.5em;
+}

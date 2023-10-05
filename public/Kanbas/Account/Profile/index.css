@@ -1,0 +1,94 @@
+#SubBar ul {
+  padding-left: 25px;
+}
+
+#SubBar ul li {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: red;
+}
+
+#SubBar ul li.active {
+  border-left: solid 2px gray;
+  color: black;
+}
+
+
+
+.fa-big {
+  margin-top: 20px;
+  height: 100px;
+  width: 100px;
+  border: solid 1px gray;
+  border-radius: 50%;
+  align-content: bottom;
+}
+
+.fa-user-big {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-content: bottom;
+  font-size: 80px;
+}
+
+.profileHeader {
+  padding: 12px 0 0 0;
+  line-height: 1.25;
+  margin: 6px 0;
+  font-family: "Helvetica Neue" !important;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+
+.link-with-icon i {
+  margin-left: 5px;
+  /* Add spacing between text and icon */
+  font-size: 1rem;
+  /* Adjust the icon size */
+}
+
+label {
+  display: block;
+}
+
+input,
+select {
+  display: block;
+  width: 90%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  height: fit-content;
+
+}
+
+.fa-edit {
+  color: black;
+}
+
+.btn-edit-profile {
+  background: #f5f5f5;
+  color: #2d3b45;
+  border: 1px solid;
+  border-color: #c7cdd1;
+  border-radius: 3px;
+  transition: background-color .2s ease-in-out;
+  display: inline-block;
+  position: relative;
+  padding: 8px 14px;
+  margin-bottom: 0;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 20px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  text-shadow: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
