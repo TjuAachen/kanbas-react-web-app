@@ -11,3 +11,168 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#SideBar {
+
+  text-align: center;
+
+
+}
+
+
+
+#SideBar .list-group-item {
+ 
+  height: 88px;
+  border-style: none;
+  background-color: black;
+  font-size: small;
+  border-radius: 0%;
+  width: 90px;
+  color: white;
+
+
+}
+
+#topBar {
+  padding-left: 30px;
+  height: 10%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-color: grey;
+  border-bottom: 1px solid grey;
+  z-index: 1;
+
+}
+
+.logo {
+  display: flex;
+  background-color: black;
+  background-image: url(../public/Kanbas/Courses/Home/resources/NEU_logo.png);
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 90px;
+  height: 88px;
+
+}
+
+.fa {
+  color: red;
+}
+
+.fa-stack {
+  font-size: 1.8em;
+
+}
+
+
+#SideBar .active {
+  background-color: #fff;
+  /* White background when clicked */
+  color: red;
+  /* Red font color when clicked */
+}
+
+a {
+  text-decoration: none !important;
+  color: black;
+}
+
+a.subBar.list-group-item {
+  padding: 8px;
+  border: none;
+  text-decoration: none;
+  color: red;
+
+}
+
+a.subBar.list-group-item.active {
+  border-left: solid 2px gray !important;
+  color: black !important;
+  background-color: white !important;
+  border-radius: 0;
+}
+
+.list-group-item {
+  border: none;
+}
+
+
+.profileHeader {
+  padding: 12px 0 0 0;
+  line-height: 1.25;
+  margin: 6px 0;
+  font-family: "Helvetica Neue" !important;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+#module1 .list-group-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-left:none;
+  border-right:none;
+  padding-left: 19px;
+  padding-right: 19px;
+  border-bottom: 0.0625rem solid #C7CDD1;
+  border-left: 2px solid green;
+  border-right: 0.0625rem solid #C7CDD1;
+}
+
+a.list-group-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 19px;
+  padding-right: 19px;
+}
+
+a.list-group-item.list-group-item-secondary {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.pill-border {
+  display: inline-block;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  list-style: none;
+  border-radius: 1em;
+  border: 1px solid rgba(0,0,0,.25);
+}
+
+p.card-text {
+
+  color: grey;
+}
+
+.title-text {
+  color: red;
+  margin: auto 0 auto 15px;
+  font-weight: normal;
+}
+
+.button-margin {
+  margin-left: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-grey {
+  background-color: #e4e4e4 !important;
+  color: black !important;
+  margin: 0px 5px;
+}
+
+.border-length {
+  border-width: 1px !important;
+  border-color: #a3a3a3;
+}
