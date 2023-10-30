@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import AssignmentItem from './AssignmentItem';
 import Database from '../../Database';
+import { useSelector, useDispatch } from "react-redux";
+
 
 function AssignmentTab({courseId}) {
-  const assignments = Database.assignments;
+  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
   const courseAssignments = assignments.filter(
     (assignment) => assignment.course === courseId);
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -46,13 +48,8 @@ function AssignmentTab({courseId}) {
             ? null
             : courseAssignments.map((assignment, index) => (
                 <AssignmentItem
-                  key={assignment._id} // Don't forget to add a unique key prop
-                  id={assignment._id}
-                  courseId={courseId}
-                  title={assignment.title}
-                  index={index}
-                  deadline_date="2023-09-19"
-                  deadline_time="11:59pm"
+                  assignment={assignment}
+                  index = {index}
                 />
               ))}
     </div>

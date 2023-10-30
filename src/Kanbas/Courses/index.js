@@ -8,7 +8,7 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 
-function Courses() {
+function Courses({ courses }) {
     const { courseId } = useParams();
     const location = useLocation();
 
@@ -16,7 +16,7 @@ function Courses() {
     const pathSegments = location.pathname.split('/');
     const subPage = pathSegments[pathSegments.length - 1];
 
-    const course = db.courses.find((course) => course._id === courseId);
+    const course = courses.find((course) => course._id === courseId);
     return (
         <>
 
@@ -47,7 +47,9 @@ function Courses() {
                         <Route path="Home" element={<h1>Home</h1>} />
                         <Route path="Modules" element={<Modules />} />
                         <Route path="Assignments" element={<Assignments />} />
-                        <Route path="Assignments/:assignmentId"
+                        <Route path="Assignments/editAssignment"
+                            element={<AssignmentEditor />} />
+                        <Route path="Assignments/addAssignment"
                             element={<AssignmentEditor />} />
                         <Route path="Grades" element={<Grades />} />
 

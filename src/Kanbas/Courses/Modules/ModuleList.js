@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import db from "../../Database";
 import ToggleLink from "./ToggleLink";
 import Dropdown from 'react-bootstrap/Dropdown';
 import StackWithCheckIcon from "../../../Widgets/StackWithCheckIcon";
-
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addModule,
+  deleteModule,
+  updateModule,
+  setModule,
+} from "./modulesReducer";
 
 function ModuleList() {
   const { courseId } = useParams();
-  const modules = db.modules;
+
+  const modules = useSelector((state) => state.modulesReducer.modules);
+  const module = useSelector((state) => state.modulesReducer.module);
+  const dispatch = useDispatch();
+
+
   return (
     <>
       <div style={{ display: 'flex', marginTop: '10px' }}>
@@ -17,7 +27,7 @@ function ModuleList() {
 
         <Dropdown>
           <Dropdown.Toggle variant="btn btn-grey btn-secondary button-margin" id="dropdown-basic">
-          <StackWithCheckIcon />
+            <StackWithCheckIcon />
             Publish All
           </Dropdown.Toggle>
 
@@ -39,7 +49,22 @@ function ModuleList() {
 
         </div>
       </div>
-      <hr style={{marginBottom: "60px"}}/>
+      <hr style={{ marginBottom: "20px" }} />
+
+      <div style={{ display: "flex", marginBottom: "20px" }}>
+        <input style={{ height: "fit-content", marginRight: "20px" }} value={module.name}
+          onChange={(e) => dispatch(setModule({ ...module, name: e.target.value }))
+        }
+        />
+        <textarea value={module.description}
+          onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))
+        }
+        />
+        <button onClick={() => dispatch(updateModule(module))} className="btn btn-seconday float-end" style={{ backgroundColor: "blue", marginLeft: "2%", marginRight: "2%", color: "white", width: "fit-content", height: "fit-content" }}>Update</button>
+        <button onClick={() => dispatch(addModule({ ...module, course: courseId }))} className="btn btn-seconday float-end" style={{ backgroundColor: "green", marginLeft: "2%", marginRight: "2%", color: "white", width: "fit-content", height: "fit-content" }}>Add</button>
+
+
+      </div>
       {
         modules
           .filter((module) => module.course === courseId)

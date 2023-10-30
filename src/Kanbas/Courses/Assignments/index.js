@@ -6,9 +6,7 @@ import AssignmentTab from "./AssignmentTab";
 
 function Assignments() {
   const { courseId } = useParams();
-  const assignments = db.assignments;
-  const courseAssignments = assignments.filter(
-    (assignment) => assignment.course === courseId);
+
   return (
     <div style={{width: "100%"}}>
     <div className="row" style={{ display: 'flex', marginTop: '10px' }}>
@@ -18,7 +16,7 @@ function Assignments() {
       <div className="col-3"></div>
       <div className="col-7" style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <button className="btn btn-grey btn-secondary">+Group</button>
-        <button className="btn btn-danger">+Assignment</button>
+        <Link to={"addAssignment" }><button className="btn btn-danger">+Assignment</button></Link>
         <button className="btn btn-grey btn-secondary">
           <Link to={`/`}>
             <svg style={{color: "black"}}xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
