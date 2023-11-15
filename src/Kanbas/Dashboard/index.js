@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { React, useState } from "react";
-import db from "../Database";
+
 import CardView from "./CardView";
 
 function Dashboard({ courses, course, setCourse, addNewCourse, setCourses,

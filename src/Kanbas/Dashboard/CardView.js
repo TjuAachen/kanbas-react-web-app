@@ -20,7 +20,7 @@ function CardView({id, name, number, courses, setCourse, setCourses, deleteCours
         <img className="card-img-top" style={{ height: '10rem' }} src={blue} alt="Card image cap" />
         <div className="card-body">
           <h5 className="card-title">{number}</h5>
-          <p className="card-text">{name}</p>
+          <p className="card-text">{name || "NA"}</p>
           <i className="fa fa-edit"></i>
           <div className="float-end">
             <button className='btn btn-grey btn-secondary' onClick={(event) => {
