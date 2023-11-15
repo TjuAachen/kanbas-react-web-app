@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AssignmentItem from './AssignmentItem';
-import Database from '../../Database';
 import { useSelector, useDispatch } from "react-redux";
-
+import * as client from "./client";
+import {
+  setAssignments
+} from "./assignmentsReducer";
 
 function AssignmentTab({courseId}) {
-  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
-  const courseAssignments = assignments.filter(
-    (assignment) => assignment.course === courseId);
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    client.findAssignmentsForCourse(courseId)
+      .then((assignments) =>{
+        dispatch(setAssignments(assignments))
+    
+  })}, [courseId]);
+
+  const courseAssignments = useSelector((state) => state.assignmentsReducer.assignments);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };

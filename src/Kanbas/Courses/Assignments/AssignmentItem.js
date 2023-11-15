@@ -2,10 +2,9 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import StackWithCheckIcon from '../../../Widgets/StackWithCheckIcon';
 import { useSelector, useDispatch } from "react-redux";
+import * as client from './client';
 import {
-  addAssignment,
   deleteAssignment,
-  updateAssignment,
   setAssignment,
 } from "./assignmentsReducer";
 
@@ -17,6 +16,12 @@ function AssignmentItem({ assignment, index }) {
   var start_date = assignment.dueStartDate
   var deadline_date = assignment.dueEndDate
   var deadline_time = assignment.dueTime
+
+  const handleDeleteAssignment = (assignmentId) => {
+    client.deleteAssignment(assignmentId).then((status) => {
+      dispatch(deleteAssignment(assignmentId));
+    });
+  };
   const dispatch = useDispatch();
   return (
      <div className="list-group-item">
@@ -39,7 +44,7 @@ function AssignmentItem({ assignment, index }) {
           <div style={{ marginLeft: 'auto', display: 'flex', alignItems: "center" }}>
             <StackWithCheckIcon />
 
-            <span onClick={() => dispatch(deleteAssignment(assignment._id))} role="button" class="fa-stack small">
+            <span onClick={() => handleDeleteAssignment(assignment._id)} role="button" class="fa-stack small">
               <i class="fa fa-circle fa-stack-2x"></i>
               <i class="fa fa-trash fa-stack-1x fa-inverse"></i>
             </span>

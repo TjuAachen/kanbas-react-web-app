@@ -1,4 +1,5 @@
-import db from "../../Kanbas/Database";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Navigate, Route, Routes, useParams, useLocation } from "react-router-dom";
 import 'font-awesome/css/font-awesome.min.css';
 import CourseNavigation from "./CourseNavigation";
@@ -8,15 +9,27 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 
-function Courses({ courses }) {
+function Courses() {
     const { courseId } = useParams();
     const location = useLocation();
 
     // Get the final path parameter
     const pathSegments = location.pathname.split('/');
     const subPage = pathSegments[pathSegments.length - 1];
+    const URL = "https://kanbas-node-server-app-z6w7.onrender.com/api/courses";
 
-    const course = courses.find((course) => course._id === courseId);
+    const [course, setCourse] = useState({});
+    const findCourseById = async (courseId) => {
+        const response = await axios.get(
+        `${URL}/${courseId}`
+      );
+      
+      setCourse(response.data);
+    };
+    useEffect(() => {
+        findCourseById(courseId);
+      }, [courseId]);
+      
     return (
         <>
 
@@ -44,7 +57,6 @@ function Courses({ courses }) {
                     <Routes>
                         <Route path="/" element={<Navigate to="Home" />} />
                         <Route path="Home" element={<Home />} />
-                        <Route path="Home" element={<h1>Home</h1>} />
                         <Route path="Modules" element={<Modules />} />
                         <Route path="Assignments" element={<Assignments />} />
                         <Route path="Assignments/editAssignment"

@@ -6,6 +6,7 @@ import {
   deleteModule,
   setModule,
 } from "./modulesReducer";
+import * as client from "./client";
 
 function ToggleLink({ module }) {
     const [isCollapsed, setIsCollapsed] = useState(true);
@@ -14,6 +15,11 @@ function ToggleLink({ module }) {
         setIsCollapsed(!isCollapsed);
     };
 
+    const handleDeleteModule = (moduleId) => {
+        client.deleteModule(moduleId).then((status) => {
+          dispatch(deleteModule(moduleId));
+        });
+      };
   
     const dispatch = useDispatch();
 
@@ -58,7 +64,7 @@ function ToggleLink({ module }) {
                         />
                     </svg>
                     <button className='btn btn-grey btn-secondary' onClick={() => dispatch(setModule(module))}>Edit</button>
-                    <button className='btn btn-danger'  onClick={() => dispatch(deleteModule(module._id))}
+                    <button className='btn btn-danger'  onClick={() => handleDeleteModule(module._id)}
                     >Delete</button>
                 </div>
 

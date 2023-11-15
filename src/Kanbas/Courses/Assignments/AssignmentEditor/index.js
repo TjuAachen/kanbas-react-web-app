@@ -3,21 +3,32 @@ import { useNavigate, useLocation, Link, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   addAssignment,
-  deleteAssignment,
   updateAssignment,
   setAssignment,
 } from "../assignmentsReducer";
 import "../../../../index.css";
+import * as client from "../client";
 
 function AssignmentEditor() {
   const location = useLocation();
   const currentPath = location.pathname;
   const { courseId } = useParams();
 
-  const assignments = useSelector((state) => state.assignmentsReducer.assignments);
+ 
   var assignment = useSelector((state) => state.assignmentsReducer.assignment);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleUpdateAssignment = async () => {
+    const status = await client.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
+  const handleAddAssignment = () => {
+    client.createAssignment(courseId, assignment).then((assignment) => {dispatch(addAssignment(assignment))
+  });
+  };
+
   assignment = {...assignment, course : courseId}
   return (
     <div style={{ flex: "1" }}>
@@ -89,7 +100,7 @@ function AssignmentEditor() {
     <div>
       <div className="float-end">
       <button className="btn btn-secondary" onClick={() => navigate(-1)}>Cancel</button>
-      <button className="btn btn-danger" onClick={() => {currentPath.includes("addAssignment")? dispatch(addAssignment(assignment)) : dispatch(updateAssignment(assignment)); navigate(-1);}}>Save</button>
+      <button className="btn btn-danger" onClick={() => {currentPath.includes("addAssignment")? handleAddAssignment() : handleUpdateAssignment(); navigate(-1);}}>Save</button>
       </div>
     </div>
     </div>
