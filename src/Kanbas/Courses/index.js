@@ -16,7 +16,7 @@ function Courses() {
     // Get the final path parameter
     const pathSegments = location.pathname.split('/');
     const subPage = pathSegments[pathSegments.length - 1];
-    const API_BASE = process.env.REACT_API_BASE;
+    const API_BASE = process.env.REACT_APP_API_BASE;
     const URL = `${API_BASE}/api/courses`;
 
     const [course, setCourse] = useState({});
