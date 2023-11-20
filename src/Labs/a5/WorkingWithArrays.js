@@ -67,7 +67,7 @@ function WorkingWithArrays() {
     useEffect(() => {
         fetchTodos();
     }, []);
-    const API_BASE = 'https://kanbas-node-server-app-z6w7.onrender.com'
+    const API_BASE = process.env.REACT_API_BASE
     const API = `${API_BASE}/a5/todos`;
     return (
         <div>

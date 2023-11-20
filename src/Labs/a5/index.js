@@ -3,7 +3,7 @@ import WorkingWithObjects from "./WorkingWithObjects";
 import WorkingWithArrays from "./WorkingWithArrays";
 
 function Assignment5() {
-    const API_BASE = 'https://kanbas-node-server-app-z6w7.onrender.com'
+    const API_BASE = process.env.REACT_API_BASE
     return (
         <div>
             <h1>Assignment 5</h1>

@@ -16,7 +16,8 @@ function Courses() {
     // Get the final path parameter
     const pathSegments = location.pathname.split('/');
     const subPage = pathSegments[pathSegments.length - 1];
-    const URL = "https://kanbas-node-server-app-z6w7.onrender.com/api/courses";
+    const API_BASE = process.env.REACT_API_BASE;
+    const URL = `${API_BASE}/api/courses`;
 
     const [course, setCourse] = useState({});
     const findCourseById = async (courseId) => {
