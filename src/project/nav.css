@@ -1,0 +1,9 @@
+.nav-link.active {
+    background-color: #007bff; /* Bootstrap's default blue color */
+    color: #fff; /* Text color for better visibility */
+}
+
+.flex-column.nav {
+    border: 2px solid lightgray;
+    border-radius: 5px;
+}

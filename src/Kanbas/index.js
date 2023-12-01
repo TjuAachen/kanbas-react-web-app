@@ -68,7 +68,6 @@ function Kanbas() {
         <KanbasNavigation />
         <Routes>
           <Route path="/" element={<Navigate to="Dashboard" />} />
-          <Route path="Account" element={<h1>Account</h1>} />
           <Route path="Dashboard" element={<Dashboard
             courses={courses}
             course={course}
