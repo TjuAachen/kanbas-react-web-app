@@ -10,12 +10,14 @@ function Account() {
     const [account, setAccount] = useState(null);
     const findUserById = async (id) => {
         const user = await client.findUserById(id);
+        const originalDate = new Date(user.dob) || new Date();
+        user.dob = originalDate.toISOString().split('T')[0];
         setAccount(user);
     };
     const navigate = useNavigate();
     const fetchAccount = async () => {
         const account = await client.account();
-        const originalDate = new Date(account.dob);
+        const originalDate = new Date(account.dob) || new Date();
         account.dob = originalDate.toISOString().split('T')[0];
         setAccount(account);
     };
