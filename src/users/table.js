@@ -8,8 +8,15 @@ function UserTable() {
   const [user, setUser] = useState({ username: "", password: "", role: "USER" });
   const createUser = async () => {
     try {
-      delete user._id;
-      const newUser = await client.createUser(user);
+      // Destructure the object to create a shallow copy
+      const copiedUser = { ...user };
+
+      // Check if the field exists in the object and delete it
+      if (copiedUser.hasOwnProperty('_id')) {
+        delete copiedUser._id;
+      }
+      console.log(copiedUser, "debug")
+      const newUser = await client.createUser(copiedUser);
       setUsers([newUser, ...users]);
     } catch (err) {
       console.log(err);
