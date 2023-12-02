@@ -18,6 +18,8 @@ function Account() {
         if (!isValidDate(originalDate)) {
             originalDate = new Date();
         }
+        console.log(user, "debug")
+       // user = JSON.parse(user);
         user.dob = originalDate.toISOString().split('T')[0];
         setAccount(user);
     };
@@ -28,6 +30,8 @@ function Account() {
         if (!isValidDate(originalDate)) {
             originalDate = new Date();
         }
+        console.log(account, "debug")
+       // account = JSON.parse(account);
         account.dob = originalDate.toISOString().split('T')[0];
         setAccount(account);
     };
