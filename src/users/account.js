@@ -5,8 +5,13 @@ import { Link, useParams } from 'react-router-dom';
 import "./signin.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function isValidDate(date) {
-    return date instanceof Date && !isNaN(date);
+function setValidDate(dob) {
+    let date = new Date(dob);
+    if(!(date instanceof Date && !isNaN(date))) {
+        date = new Date();
+    }
+    date = date.toISOString().split('T')[0];
+    return date;
   }
 
 function Account() {
@@ -14,25 +19,11 @@ function Account() {
     const [account, setAccount] = useState(null);
     const findUserById = async (id) => {
         let user = await client.findUserById(id);
-        let originalDate = new Date(user.dob);
-        if (!isValidDate(originalDate)) {
-            originalDate = new Date();
-        }
-        console.log(user, "debug")
-       // user = JSON.parse(user);
-        user.dob = originalDate.toISOString().split('T')[0];
         setAccount(user);
     };
     const navigate = useNavigate();
     const fetchAccount = async () => {
         let account = await client.account();
-        let originalDate = new Date(account.dob);
-        if (!isValidDate(originalDate)) {
-            originalDate = new Date();
-        }
-        console.log(account, "debug")
-       // account = JSON.parse(account);
-        account.dob = originalDate.toISOString().split('T')[0];
         setAccount(account);
     };
     const save = async () => {
@@ -91,7 +82,7 @@ function Account() {
                     </div>
                     <div className="signin-input">
                     <label htmlFor="username">Birth  date:</label>
-                    <input type="date" value={account.dob}
+                    <input type="date" value={setValidDate(account.dob)}
                         onChange={(e) => setAccount({
                             ...account,
                             dob: e.target.value
