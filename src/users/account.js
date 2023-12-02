@@ -13,7 +13,7 @@ function Account() {
     const { id } = useParams();
     const [account, setAccount] = useState(null);
     const findUserById = async (id) => {
-        const user = await client.findUserById(id);
+        let user = await client.findUserById(id);
         let originalDate = new Date(user.dob);
         if (!isValidDate(originalDate)) {
             originalDate = new Date();
@@ -23,7 +23,7 @@ function Account() {
     };
     const navigate = useNavigate();
     const fetchAccount = async () => {
-        const account = await client.account();
+        let account = await client.account();
         let originalDate = new Date(account.dob);
         if (!isValidDate(originalDate)) {
             originalDate = new Date();
